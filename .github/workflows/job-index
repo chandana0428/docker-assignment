@@ -1,0 +1,16 @@
+name: Job Index Demo
+
+on:
+  push:
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        version: [1,2,3]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display Job Index
+        run: echo "Current Job Index = ${{ strategy.job-index }}"
