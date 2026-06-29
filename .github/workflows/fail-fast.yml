@@ -1,0 +1,22 @@
+name: Fail Fast Demo
+
+on:
+  push:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Fail on Windows
+        run: |
+          echo "Running on ${{ matrix.os }}"
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            exit 1
+          fi
+        shell: bash
