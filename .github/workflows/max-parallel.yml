@@ -1,0 +1,19 @@
+name: Max Parallel Demo
+
+on:
+  push:
+
+jobs:
+  test:
+    strategy:
+      max-parallel: 2
+      matrix:
+        version: [1,2,3,4]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Simulate Work
+        run: |
+          echo "Running Version ${{ matrix.version }}"
+          sleep 20
