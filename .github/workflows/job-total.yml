@@ -1,0 +1,16 @@
+name: Job Total Demo
+
+on:
+  push:
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        version: [1,2,3,4]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display Job Total
+        run: echo "Total Jobs = ${{ strategy.job-total }}"
